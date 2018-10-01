@@ -1,4 +1,5 @@
 import { ADD_ARTICLE } from "../constants/action-types";
+import { DELETE_ARTICLE } from "../constants/action-types";
 
 const initialState = {
     articles: []
@@ -14,6 +15,8 @@ const rootReducer = (state = initialState, action) => {
             // return {...state, articles: state.articles.concat(action.payload)};
         //Example #3: Pure function with spread operator
             return {articles: [...state.articles, action.payload]};
+        case DELETE_ARTICLE:
+            return {articles: state.articles.filter(article => article.id !== action.id) }
         default:
             return state
     }
